@@ -17,7 +17,7 @@ cv2.waitKey(0) # also takes ord value -- 27 is esc, ord('s') etc remember??
 cv2.destroyAllWindows()
 # this loads a resizeable window -- does not scale img -- that you exit via '0' key
 
-# to save the manipulated file -- you can use: cv2.imwrite('image.png',img)
+# to save the manipulated file -- you can use: cv2.imwritimage.png',img)
 
 
 ############## Matplotlib window ###############
