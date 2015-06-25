@@ -32,7 +32,7 @@ while(True):
     # contours = coordinate of the contour
     for i in range(len(contours)):
         cnt=contours[i]
-        print contours[i]
+        # print contours[i]
         area = cv2.contourArea(cnt)
         if(area>max_area):
             max_area=area
@@ -48,6 +48,7 @@ while(True):
     defects = cv2.convexityDefects(cnt,hull)
     count_defects = 0
     cv2.drawContours(thresh1, contours, -1, (0,255,0), 3)
+    print defects.shape
     for i in range(defects.shape[0]):
         s,e,f,d = defects[i,0]
         start = tuple(cnt[s][0])
@@ -63,11 +64,22 @@ while(True):
         #dist = cv2.pointPolygonTest(cnt,far,True)
         cv2.line(crop_cap,start,end,[0,255,0],2)
         #cv2.circle(crop_cap,far,5,[0,0,255],-1)
+    if count_defects == 1:
+    	cv2.putText(capture,"2", (50,50), cv2.FONT_HERSHEY_SIMPLEX, 2, 2)
+    elif count_defects == 2:
+        str = "3"
+        print str
+        cv2.putText(capture, str, (5,50), cv2.FONT_HERSHEY_SIMPLEX, 1, 2)
+    elif count_defects == 3:
+        cv2.putText(capture,"4", (50,50), cv2.FONT_HERSHEY_SIMPLEX, 2, 2)
+    elif count_defects == 4:
+        cv2.putText(capture,"5", (50,50), cv2.FONT_HERSHEY_SIMPLEX, 2, 2)
+    else:
+        cv2.putText(capture,"?????", (50,50),\
+                    cv2.FONT_HERSHEY_SIMPLEX, 2, 2)
     cv2.imshow('Gesture', capture)
     # all_img = np.hstack((drawing, crop_cap))
     # cv2.imshow('Contours', all_img)
-
-
 
 	#### quit with 27
     if cv2.waitKey(1) == 27:
