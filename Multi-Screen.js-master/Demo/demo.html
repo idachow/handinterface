@@ -1,0 +1,170 @@
+<!--
+ Multi-Screen.js demo page
+ Author: Ian de Vries [ian@ian-devries.com]
+ License: MIT License [http://opensource.org/licenses/MIT]
+ -->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<link href='http://fonts.googleapis.com/css?family=Bitter:700' rel='stylesheet' type='text/css' >
+		<link href='http://fonts.googleapis.com/css?family=Raleway:600' rel='stylesheet' type='text/css' >
+		<link href="styles/reset.css" type="text/css" rel="stylesheet" />
+		<link href="styles/demo-styles.css" type="text/css" rel="stylesheet" />
+		<link href="../multi-screen-css.css" type="text/css" rel="stylesheet" />
+		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.pack.js"></script>
+		<script type="text/javascript" src="../multi-screen.js"></script>
+		<script type="text/javascript">
+
+		$(document).ready(function() { 
+
+			MultiScreen.init(); 
+
+			$('#topleft-via-top').click(function () {
+
+				MultiScreen.switch_screens(
+					{target_id: 'top-screen', enter_animation_command: 'top', exit_animation_command: 'bottom', chain_animation_options: 
+						{target_id: 'topleft-screen', enter_animation_command: 'left', exit_animation_command: 'right'}
+					});
+
+			});
+
+			$('#right-via-bottomright').click(function () {
+
+				MultiScreen.switch_screens(
+					{target_id: 'bottomright-screen', enter_animation_command: 'bottomright', exit_animation_command: 'topleft', chain_animation_options: 
+						{target_id: 'right-screen', enter_animation_command: 'top', exit_animation_command: 'bottom'}
+					});
+
+			});
+
+			$('#go-crazy').click(function () {
+
+				// inception...
+				MultiScreen.switch_screens(
+					{target_id: 'bottomright-screen', enter_animation_command: 'bottomright', exit_animation_command: 'topleft', chain_animation_options: 
+						{target_id: 'right-screen', enter_animation_command: 'top', exit_animation_command: 'bottom',
+							chain_animation_options: 
+							{target_id: 'topright-screen', enter_animation_command: 'top', exit_animation_command: 'bottom',
+								chain_animation_options: 
+								{target_id: 'top-screen', enter_animation_command: 'left', exit_animation_command: 'right',
+									chain_animation_options: 
+									{target_id: 'topleft-screen', enter_animation_command: 'left', exit_animation_command: 'right',
+										chain_animation_options: 
+										{target_id: 'left-screen', enter_animation_command: 'bottom', exit_animation_command: 'top',
+											chain_animation_options: 
+											{target_id: 'bottomleft-screen', enter_animation_command: 'bottom', exit_animation_command: 'top',chain_animation_options: 
+												{target_id: 'bottom-screen', enter_animation_command: 'right', exit_animation_command: 'left',chain_animation_options: 
+													{target_id: 'center-screen', enter_animation_command: 'top', exit_animation_command: 'bottom'}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					});
+
+			});
+
+		});
+
+		</script>
+		<title>Multi-Screen.js demo</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	</head>
+	<body>
+		<div id="center-screen" class="ms-container ms-default">
+			<h1 class="margin-top">Multi-Screen.js (v1.2.2)</h1>
+			<h2 class="margin-bottom">This is the center</h2>
+			<p class="line-height vertical-margin">
+				<a href="javascript:void(0)" class="ms-nav-link" data-ms-target="top-screen" data-ms-exit-animation="bottom" data-ms-enter-animation="top">go up</a><br/>
+				<a href="javascript:void(0)" class="ms-nav-link" data-ms-target="right-screen" data-ms-exit-animation="left" data-ms-enter-animation="right">go right</a><br/>
+				<a href="javascript:void(0)" class="ms-nav-link" data-ms-target="left-screen" data-ms-exit-animation="right" data-ms-enter-animation="left">go left</a><br/>
+				<a href="javascript:void(0)" class="ms-nav-link" data-ms-target="bottom-screen" data-ms-exit-animation="top" data-ms-enter-animation="bottom">go down</a><br/><br/>
+				<a href="javascript:void(0)" class="ms-nav-link" data-ms-target="topleft-screen" data-ms-exit-animation="bottomright" data-ms-enter-animation="topleft">go up and left</a><br/>
+				<a href="javascript:void(0)" class="ms-nav-link" data-ms-target="topright-screen" data-ms-exit-animation="bottomleft" data-ms-enter-animation="topright">go up and right</a><br/>
+				<a href="javascript:void(0)" class="ms-nav-link" data-ms-target="bottomleft-screen" data-ms-exit-animation="topright" data-ms-enter-animation="bottomleft">go down and left</a><br/>
+				<a href="javascript:void(0)" class="ms-nav-link" data-ms-target="bottomright-screen" data-ms-exit-animation="topleft" data-ms-enter-animation="bottomright">go down and right</a><br/><br/>
+				<a href="javascript:void(0)" id="topleft-via-top">go up, then left</a><br/>
+				<a href="javascript:void(0)" id="right-via-bottomright">go down and right, then up</a><br/>
+				<a href="javascript:void(0)" id="go-crazy">Merry go round!</a><br/><br/>
+				<a href="javascript:MultiScreen.set_default_distance(-1);alert('animation distance between screens removed');">sticky screens</a><br/><br/>
+				<a href="javascript:MultiScreen.set_default_time(2000);alert('animation speed changed to 2000ms')">slow-mo mode</a><br/>
+				<a href="javascript:MultiScreen.set_default_time(200);alert('animation speed changed to 200ms')">speedy mode</a>
+			</p>
+		</div>
+		<div id="top-screen" class="ms-container">
+			<h2 class="centralize vertical-margin">This is the top</h2>
+			<p class="centralize line-height vertical-margin">
+				<a href="javascript:void(0)" class="ms-nav-link" data-ms-target="center-screen" data-ms-exit-animation="top" data-ms-enter-animation="bottom">go down to the center</a><br/><br/>
+				<a href="javascript:void(0)" class="ms-nav-link" data-ms-target="topleft-screen" data-ms-exit-animation="right" data-ms-enter-animation="left">go left</a><br/>
+				<a href="javascript:void(0)" class="ms-nav-link" data-ms-target="topright-screen" data-ms-exit-animation="left" data-ms-enter-animation="right">go right</a><br/><br/>
+				<a href="javascript:void(0)" class="ms-nav-link" data-ms-target="right-screen" data-ms-exit-animation="topleft" data-ms-enter-animation="bottomright">go down and right</a><br/>
+				<a href="javascript:void(0)" class="ms-nav-link" data-ms-target="left-screen" data-ms-exit-animation="topright" data-ms-enter-animation="bottomleft">go down and left</a><br/>
+			</p>
+		</div>
+		<div id="right-screen" class="ms-container">
+			<h2 class="centralize vertical-margin">This is the right</h2>
+			<p class="centralize line-height vertical-margin">
+				<a href="javascript:void(0)" class="ms-nav-link" data-ms-target="center-screen" data-ms-exit-animation="right" data-ms-enter-animation="left">go left to the center</a><br/><br/>
+				<a href="javascript:void(0)" class="ms-nav-link" data-ms-target="topright-screen" data-ms-exit-animation="bottom" data-ms-enter-animation="top">go up</a><br/>
+				<a href="javascript:void(0)" class="ms-nav-link" data-ms-target="bottomright-screen" data-ms-exit-animation="top" data-ms-enter-animation="bottom">go down</a><br/><br/>
+				<a href="javascript:void(0)" class="ms-nav-link" data-ms-target="top-screen" data-ms-exit-animation="bottomright" data-ms-enter-animation="topleft">go up and left</a><br/>
+				<a href="javascript:void(0)" class="ms-nav-link" data-ms-target="bottom-screen" data-ms-exit-animation="topright" data-ms-enter-animation="bottomleft">go down and left</a><br/>
+			</p>
+		</div>
+		<div id="left-screen" class="ms-container">
+			<h2 class="centralize vertical-margin">This is the left</h2>
+			<p class="centralize line-height vertical-margin">
+				<a href="javascript:void(0)" class="ms-nav-link" data-ms-target="center-screen" data-ms-exit-animation="left" data-ms-enter-animation="right">go right to the center</a><br/><br/>
+				<a href="javascript:void(0)" class="ms-nav-link" data-ms-target="topleft-screen" data-ms-exit-animation="bottom" data-ms-enter-animation="top">go up</a><br/>
+				<a href="javascript:void(0)" class="ms-nav-link" data-ms-target="bottomleft-screen" data-ms-exit-animation="top" data-ms-enter-animation="bottom">go down</a><br/><br/>
+				<a href="javascript:void(0)" class="ms-nav-link" data-ms-target="top-screen" data-ms-exit-animation="bottomleft" data-ms-enter-animation="topright">go up and right</a><br/>
+				<a href="javascript:void(0)" class="ms-nav-link" data-ms-target="bottom-screen" data-ms-exit-animation="topleft" data-ms-enter-animation="bottomright">go down and right</a><br/>
+			</p>
+		</div>
+		<div id="bottom-screen" class="ms-container">
+			<h2 class="centralize vertical-margin">This is the bottom</h2>
+			<p class="centralize line-height vertical-margin">
+				<a href="javascript:void(0)" class="ms-nav-link" data-ms-target="center-screen" data-ms-exit-animation="bottom" data-ms-enter-animation="top">go up to the center</a><br/><br/>
+				<a href="javascript:void(0)" class="ms-nav-link" data-ms-target="bottomleft-screen" data-ms-exit-animation="right" data-ms-enter-animation="left">go left</a><br/>
+				<a href="javascript:void(0)" class="ms-nav-link" data-ms-target="bottomright-screen" data-ms-exit-animation="left" data-ms-enter-animation="right">go right</a><br/><br/>
+				<a href="javascript:void(0)" class="ms-nav-link" data-ms-target="right-screen" data-ms-exit-animation="bottomleft" data-ms-enter-animation="topright">go up and right</a><br/>
+				<a href="javascript:void(0)" class="ms-nav-link" data-ms-target="left-screen" data-ms-exit-animation="bottomright" data-ms-enter-animation="topleft">go up and left</a><br/>
+			</p>
+		</div>
+		<div id="topleft-screen" class="ms-container">
+			<h2 class="centralize vertical-margin">This is the top-left</h2>
+			<p class="centralize line-height vertical-margin">
+				<a href="javascript:void(0)" class="ms-nav-link" data-ms-target="center-screen" data-ms-exit-animation="topleft" data-ms-enter-animation="bottomright">go down and right to the center</a><br/><br/>
+				<a href="javascript:void(0)" class="ms-nav-link" data-ms-target="left-screen" data-ms-exit-animation="top" data-ms-enter-animation="bottom">go down</a><br/>
+				<a href="javascript:void(0)" class="ms-nav-link" data-ms-target="top-screen" data-ms-exit-animation="left" data-ms-enter-animation="right">go right</a><br/>
+			</p>
+		</div>
+		<div id="topright-screen" class="ms-container">
+			<h2 class="centralize vertical-margin">This is the top-right</h2>
+			<p class="centralize line-height vertical-margin">
+				<a href="javascript:void(0)" class="ms-nav-link" data-ms-target="center-screen" data-ms-exit-animation="topright" data-ms-enter-animation="bottomleft">go down and left to the center</a><br/><br/>
+				<a href="javascript:void(0)" class="ms-nav-link" data-ms-target="right-screen" data-ms-exit-animation="top" data-ms-enter-animation="bottom">go down</a><br/>
+				<a href="javascript:void(0)" class="ms-nav-link" data-ms-target="top-screen" data-ms-exit-animation="right" data-ms-enter-animation="left">go left</a><br/>
+			</p>
+		</div>
+		<div id="bottomleft-screen" class="ms-container">
+			<h2 class="centralize vertical-margin">This is the bottom-left</h2>
+			<p class="centralize line-height vertical-margin">
+				<a href="javascript:void(0)" class="ms-nav-link" data-ms-target="center-screen" data-ms-exit-animation="bottomleft" data-ms-enter-animation="topright">go up and right to the center</a><br/><br/>
+				<a href="javascript:void(0)" class="ms-nav-link" data-ms-target="left-screen" data-ms-exit-animation="bottom" data-ms-enter-animation="top">go up</a><br/>
+				<a href="javascript:void(0)" class="ms-nav-link" data-ms-target="bottom-screen" data-ms-exit-animation="left" data-ms-enter-animation="right">go right</a><br/>
+			</p>
+		</div>
+		<div id="bottomright-screen" class="ms-container">
+			<h2 class="centralize vertical-margin">This is the bottom-right</h2>
+			<p class="centralize line-height vertical-margin">
+				<a href="javascript:void(0)" class="ms-nav-link" data-ms-target="center-screen" data-ms-exit-animation="bottomright" data-ms-enter-animation="topleft">go up and left to the center</a><br/><br/>
+				<a href="javascript:void(0)" class="ms-nav-link" data-ms-target="right-screen" data-ms-exit-animation="bottom" data-ms-enter-animation="top">go up</a><br/>
+				<a href="javascript:void(0)" class="ms-nav-link" data-ms-target="bottom-screen" data-ms-exit-animation="right" data-ms-enter-animation="left">go left</a><br/>
+			</p>
+		</div>
+	</body>
+</html>
