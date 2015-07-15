@@ -23,10 +23,21 @@ h1 {
     font-size:5em;
 }
 
-.centered {
-  position: fixed;
-  top: 20%;
-  left: 20%;
-  /* bring your own prefixes */
-  transform: translate(-50%, -50%);
+h2 {
+    font-size:2em;
 }
+
+a, a:link {
+    color: #80CFCF;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #CF4A40;
+}
+
+.col {
+  padding-right:250px;
+  padding-left:25px;
+}
+
