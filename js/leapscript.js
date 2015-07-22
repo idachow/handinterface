@@ -32,11 +32,6 @@ Leap.loop(controllerOptions, function(frame) {
           }
           break;
       }
-      // if(gesture.type =="keyTap") {
-      //     console.log("tap recognized, link back");
-      //     window.open("calendardemo.html", "_self");
-      //     break;
-      // }
     }
   }
 
