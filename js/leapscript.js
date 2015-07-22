@@ -13,6 +13,11 @@ Leap.loop(controllerOptions, function(frame) {
           window.location.reload(true);
           break;
       }
+      if(gesture.type == "keyTap") {
+          console.log("tap recognized, dingdong");
+          slackpls();
+          break;
+      }
       if(gesture.type == "swipe") {
           var isHorizontal = Math.abs(gesture.direction[0]) > Math.abs(gesture.direction[1]);
 
@@ -36,3 +41,4 @@ Leap.loop(controllerOptions, function(frame) {
   }
 
 });
+

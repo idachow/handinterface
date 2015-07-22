@@ -1,30 +1,25 @@
+var SlackBot = require('slackbots');
+
 function slackMe() {
 
 	console.log("AAA");
 
-	var moduleName = 'slack-node';
-	require([moduleName], function(slackModule){
-	    // do something with fooModule
+	// webhookUrl = "https://hooks.slack.com/services/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";
 
-		// var Slack = require(['slack-node']);
+	var bot = new SlackBot({
+	    token: 'xoxb-8068201271-MqFtLSMe5jzkCEriNAOZ9IrA', // Add a bot https://my.slack.com/services/new/bot and put the token 
+	    name: 'My Bot'
+	});
 
-		console.log("BBB");
+	bot.on('start', function() {
+	    // more information about additional params https://api.slack.com/methods/chat.postMessage
+	    var params = {
+	        icon_emoji: ':cat:'
+	    };
 
-		webhookUrl = "https://hooks.slack.com/services/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";
-
-		console.log("CCC");
-		
-		slack = new Slack();
-		slack.setWebhook(webhookUrl);
-
-		console.log("pre-function");
-
-		slack.webhook({
-		  channel: "#scripttest",
-		  username: "webhookbot",
-		  text: "This is posted to #scripttest from this site which doesnt work ."
-		}, function(err, response) {
-		  console.log(response);
-		});
-	})
+	    bot.postMessageToChannel('scripttest', 'meow!', params);
+	    // bot.postMessageToUser('username', 'meow!', params);
+	    // bot.postMessageToGroup('private_group', 'meow!', params);
+	});
+	
 };
