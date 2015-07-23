@@ -1,0 +1,59 @@
+<!--welcomeWall web app-->
+<!--ida chow 2015-->
+<!--messiest thing ever-->
+
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/multi-screen-css.css" type="text/css"/>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.pack.js"></script>
+    <script type="text/javascript" src="js/multi-screen.js"></script>
+    <!--leapscript-->
+    <script src="js/LeapCursor/lib/leap.min.js"></script>
+    <script src="js/LeapCursor/lib/leaptrainer.min.js"></script>
+    <script src="js/LeapCursor/lib/three.min.js"></script>
+    <script src="js/LeapCursor/lib/detector.min.js"></script>
+    <script src="js/LeapCursor/leapcursor.min.js?color=#999&width=200&height=200"></script>
+    <!--calendar script-->
+    <script type="text/javascript" src="js/calendarscript.js"></script>
+    <!--slack script-->
+    <!--<script type="text/javascript" src="js/slacking.js"></script> -->
+    <script type="text/javascript" src="js/slacklink.js"></script>
+    <!--leap motion script-->
+    <script src="http://js.leapmotion.com/leap-0.6.3.min.js"></script>
+    <script type="text/javascript" src="js/leapscript.js"></script>
+    <!--refresh script-->
+    <script type="text/javascript" src="js/refreshscreen.js"></script>
+
+    <script src="https://apis.google.com/js/client.js?onload=checkAuth"></script>
+  </head>
+
+
+
+  <body>
+    <center>
+      <div id="authorize-div" style="display: none">
+        <span>Authorize access to Google Calendar API</span>
+        <!--Button for the user to click to initiate auth sequence -->
+        <button id="authorize-button" onclick="handleAuthClick(event)">
+          Authorize
+        </button>
+      </div>
+
+      <div class="container-fluid">
+        <h1>June 20th, 2015</h1>
+        <h1>
+        50*F and Cloudy
+        </h1>
+        <h2><a onclick="slackpls()" href="#">Ding Dong</h2></a>
+        <h2><a href="calendar-client.html">Client Screen</h2>
+      </div>
+
+    </center>
+  </body>
+
+</html>
+
+<!--so lost-->

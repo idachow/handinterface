@@ -1,0 +1,68 @@
+<!--welcomeWall web app-->
+<!--ida chow 2015-->
+<!--messiest thing ever-->
+
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/multi-screen-css.css" type="text/css"/>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.pack.js"></script>
+    <script type="text/javascript" src="js/multi-screen.js"></script>
+    <!--leapscript-->
+    <script src="js/LeapCursor/lib/leap.min.js"></script>
+    <script src="js/LeapCursor/lib/leaptrainer.min.js"></script>
+    <script src="js/LeapCursor/lib/three.min.js"></script>
+    <script src="js/LeapCursor/lib/detector.min.js"></script>
+    <script src="js/LeapCursor/leapcursor.min.js?color=#999&width=200&height=200"></script>
+    <!--calendar script-->
+    <script type="text/javascript" src="js/calendarscript.js"></script>
+    <!--slack script-->
+    <!--<script type="text/javascript" src="js/slacking.js"></script> -->
+    <script type="text/javascript" src="js/slacklink.js"></script>
+    <!--leap motion script-->
+    <script src="http://js.leapmotion.com/leap-0.6.3.min.js"></script>
+    <script type="text/javascript" src="js/leapscript.js"></script>
+    <!--refresh script-->
+    <script type="text/javascript" src="js/refreshscreen.js"></script>
+
+    <script src="https://apis.google.com/js/client.js?onload=checkAuth"></script>
+  </head>
+
+
+
+  <body>
+    <center>
+      <div id="authorize-div" style="display: none">
+        <span>Authorize access to Google Calendar API</span>
+        <!--Button for the user to click to initiate auth sequence -->
+        <button id="authorize-button" onclick="handleAuthClick(event)">
+          Authorize
+        </button>
+      </div>
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xs-12 col">
+          <h1>Agenda</h1> 
+          </div>
+          <div class="col-xs-6 text-right col">
+            <h2>
+              <div id="output_agendaName"></div>
+            </h2>
+          </div>
+          <div class="col-xs-6 text-left col">
+            <h2>
+              <div id="output_agendaDetails"></div>
+            </h2>
+          </div>
+          <div class="col-xs-12 col">
+            <a href="calendar-client.html">Welcome</a>
+          </div>
+        </div>
+      </div>
+    </center>
+  </body>
+
+</html>

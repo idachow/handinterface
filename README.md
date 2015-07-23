@@ -1,4 +1,5 @@
 # welcomeWall
 
-Citizen, Inc project
-Summer 2015
+Citizen, Inc project 
+| Summer 2015
+

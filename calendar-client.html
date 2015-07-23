@@ -10,7 +10,12 @@
     <link rel="stylesheet" type="text/css" href="css/multi-screen-css.css" type="text/css"/>
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.pack.js"></script>
     <script type="text/javascript" src="js/multi-screen.js"></script>
-
+    <!--leapscript-->
+    <script src="js/LeapCursor/lib/leap.min.js"></script>
+    <script src="js/LeapCursor/lib/leaptrainer.min.js"></script>
+    <script src="js/LeapCursor/lib/three.min.js"></script>
+    <script src="js/LeapCursor/lib/detector.min.js"></script>
+    <script src="js/LeapCursor/leapcursor.min.js?color=#999&width=200&height=200"></script>
     <!--calendar script-->
     <script type="text/javascript" src="js/calendarscript.js"></script>
     <!--slack script-->
@@ -28,52 +33,30 @@
 
 
   <body>
-    <div id="authorize-div" style="display: none">
-      <span>Authorize access to Google Calendar API</span>
-      <!--Button for the user to click to initiate auth sequence -->
-      <button id="authorize-button" onclick="handleAuthClick(event)">
-        Authorize
-      </button>
-    </div>
+    <center>
+      <div id="authorize-div" style="display: none">
+        <span>Authorize access to Google Calendar API</span>
+        <!--Button for the user to click to initiate auth sequence -->
+        <button id="authorize-button" onclick="handleAuthClick(event)">
+          Authorize
+        </button>
+      </div>
 
-    <div id="screen1" class="ms-container ms-default">
-      <div class="container">
+      <div class="container-fluid">
         <h1>Welcome to Citizen</h1>
         <h1>
         <div id="output_name"></pre></div><BR>
         </h1>
         <div id="output_details"></div><BR>
         <div id="gestureData"></div><BR>
-        <a class="ms-nav-link" data-ms-target="screen2" data-ms-animation="faderight" href="javascript:void(0)">Agenda</a><BR>
+        <a href="calendar-agenda.html">Agenda</a><BR>
         <P>w/ Leap connected to your computer: circle gesture to refresh page, tap gesture to send slack msg</P>
         <P></P>
         <h2><a onclick="slackpls()" href="#">SLACK ME</h2></a>
         <h2>swipe to the right to go to next page &#8592; &#8592; &#8592;</h2>
       </div>
-    </div>
 
-    <div id="screen2" class="ms-container">
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12 col">
-        <h1>Agenda</h1> 
-        </div>
-        <div class="col-xs-6 text-right col">
-          <h2>
-            <div id="output_agendaName"></div>
-          </h2>
-        </div>
-        <div class="col-xs-6 col">
-          <h2>
-            <div id="output_agendaDetails"></div>
-          </h2>
-        </div>
-        <div class="col-xs-12 col">
-          <a class="ms-nav-link" data-ms-target="screen1" data-ms-animation="faderight" href="javascript:void(0)">Welcome</a>
-        </div>
-      </div>
-    </div>
-    </div>
+    </center>
   </body>
 
 </html>
