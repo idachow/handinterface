@@ -10,6 +10,10 @@
     <link rel="stylesheet" type="text/css" href="css/multi-screen-css.css" type="text/css"/>
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.pack.js"></script>
     <script type="text/javascript" src="js/multi-screen.js"></script>
+    <!--weatherscript-->
+    <script src="js/jquery.simpleWeather/jquery.simpleWeather.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.1.0/moment.min.js"></script>
+    <script src="js/weatherscript.js"></script>
     <!--leapscript-->
     <script src="js/LeapCursor/lib/leap.min.js"></script>
     <script src="js/LeapCursor/lib/leaptrainer.min.js"></script>
@@ -44,22 +48,33 @@
 
       <div class="container-fluid">
         <div class="row">
+          <BR></BR>
+          <h1><span id="time"></span></h1>
+          <h2><span id="date"></span></h2>
+          <BR></BR>
+          <BR></BR>
           <div class="col-xs-12 col">
           <h1>Agenda</h1> 
           </div>
-          <div class="col-xs-6 text-right col">
+          <div class="col-xs-5 text-right col">
             <h2>
               <div id="output_agendaName"></div>
             </h2>
           </div>
-          <div class="col-xs-6 text-left col">
+          <div class="col-xs-7 text-left col">
             <h2>
               <div id="output_agendaDetails"></div>
             </h2>
           </div>
-          <div class="col-xs-12 col">
-            <a href="calendar-client.html">Welcome</a>
-          </div>
+
+        <div id="footer">
+        <h2>
+        <a href="index.html">Weather Screen</a> |
+        <a onclick="slackpls()" href="#">Ding Dong</a> | 
+        <a href="calendar-client.html">Client Screen</a> |
+        Agenda Screen
+        </h2>
+        </div>
         </div>
       </div>
     </center>

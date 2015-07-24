@@ -23959,7 +23959,7 @@ function slackMe() {
 	bot.on('start', function() {
 	    // more information about additional params https://api.slack.com/methods/chat.postMessage
 	    var params = {
-	        icon_emoji: ':cat:'
+	        icon_emoji: ':bell:'
 	    };
 
 	    bot.postMessageToChannel(channelInput, 'ding dong: ' + messageInput, params);

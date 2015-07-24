@@ -10,14 +10,16 @@
     <link rel="stylesheet" type="text/css" href="css/multi-screen-css.css" type="text/css"/>
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.pack.js"></script>
     <script type="text/javascript" src="js/multi-screen.js"></script>
+    <!--weatherscript-->
+    <script src="js/jquery.simpleWeather/jquery.simpleWeather.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.1.0/moment.min.js"></script>
+    <script src="js/weatherscript.js"></script>
     <!--leapscript-->
     <script src="js/LeapCursor/lib/leap.min.js"></script>
     <script src="js/LeapCursor/lib/leaptrainer.min.js"></script>
     <script src="js/LeapCursor/lib/three.min.js"></script>
     <script src="js/LeapCursor/lib/detector.min.js"></script>
     <script src="js/LeapCursor/leapcursor.min.js?color=#999&width=200&height=200"></script>
-    <!--calendar script-->
-    <script type="text/javascript" src="js/calendarscript.js"></script>
     <!--slack script-->
     <!--<script type="text/javascript" src="js/slacking.js"></script> -->
     <script type="text/javascript" src="js/slacklink.js"></script>
@@ -43,12 +45,21 @@
       </div>
 
       <div class="container-fluid">
-        <h1>June 20th, 2015</h1>
-        <h1>
-        50*F and Cloudy
-        </h1>
-        <h2><a onclick="slackpls()" href="#">Ding Dong</h2></a>
-        <h2><a href="calendar-client.html">Client Screen</h2>
+        <BR></BR>
+        <h1><span id="time"></span></h1>
+        <h2><span id="date"></span></h2>
+        <BR></BR>
+        <BR></BR>
+        <div id="weather"></div>
+
+        <div id="footer">
+        <h2>
+        Weather Screen |
+        <a onclick="slackpls()" href="#">Ding Dong</a> | 
+        <a href="calendar-client.html">Client Screen</a> |
+        <a href="calendar-agenda.html">Agenda Screen</a>
+        </h2>
+        </div>
       </div>
 
     </center>

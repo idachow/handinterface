@@ -10,6 +10,10 @@
     <link rel="stylesheet" type="text/css" href="css/multi-screen-css.css" type="text/css"/>
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.pack.js"></script>
     <script type="text/javascript" src="js/multi-screen.js"></script>
+    <!--weatherscript-->
+    <script src="js/jquery.simpleWeather/jquery.simpleWeather.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.1.0/moment.min.js"></script>
+    <script src="js/weatherscript.js"></script>
     <!--leapscript-->
     <script src="js/LeapCursor/lib/leap.min.js"></script>
     <script src="js/LeapCursor/lib/leaptrainer.min.js"></script>
@@ -43,17 +47,28 @@
       </div>
 
       <div class="container-fluid">
+        <BR></BR>
+        <h1><span id="time"></span></h1>
+        <h2><span id="date"></span></h2>
+        <BR></BR>
+        <BR></BR>
+
         <h1>Welcome to Citizen</h1>
         <h1>
         <div id="output_name"></pre></div><BR>
         </h1>
-        <div id="output_details"></div><BR>
+<!--         <div id="output_details"></div><BR> -->
         <div id="gestureData"></div><BR>
-        <a href="calendar-agenda.html">Agenda</a><BR>
-        <P>w/ Leap connected to your computer: circle gesture to refresh page, tap gesture to send slack msg</P>
-        <P></P>
-        <h2><a onclick="slackpls()" href="#">SLACK ME</h2></a>
-        <h2>swipe to the right to go to next page &#8592; &#8592; &#8592;</h2>
+        
+        <div id="footer">
+        <h2>
+        <a href="index.html">Weather Screen</a> |
+        <a onclick="slackpls()" href="#">Ding Dong</a> | 
+        Client Screen |
+        <a href="calendar-agenda.html">Agenda Screen</a>
+        </h2>
+        </div>
+
       </div>
 
     </center>
