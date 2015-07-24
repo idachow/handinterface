@@ -23948,8 +23948,6 @@ var SlackBot = require('slackbots');
 
 function slackMe() {
 
-  console.log("myInput???");
-	console.log("myInput: " + myInput);
 
 	// webhookUrl = "https://hooks.slack.com/services/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";
 
@@ -23964,7 +23962,7 @@ function slackMe() {
 	        icon_emoji: ':cat:'
 	    };
 
-	    bot.postMessageToChannel(myInput, 'ding dong!!!', params);
+	    bot.postMessageToChannel(channelInput, 'ding dong: ' + messageInput, params);
 	    // bot.postMessageToUser('username', 'meow!', params);
 	    // bot.postMessageToGroup('private_group', 'meow!', params);
 	});

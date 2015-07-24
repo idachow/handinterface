@@ -1,3 +1,5 @@
+// not currently used
+
 var SlackBot = require('slackbots');
 
 function slackMe() {
