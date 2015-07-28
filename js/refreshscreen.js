@@ -4,10 +4,10 @@ var time = new Date().getTime();
      });
 
      function refresh() {
-         if(new Date().getTime() - time >= 60000) 
+         if(new Date().getTime() - time >= 100000) 
              window.location.reload(true);
          else 
-             setTimeout(refresh, 10000);
+             setTimeout(refresh, 100000);
      }
 
-     setTimeout(refresh, 10000);
+     setTimeout(refresh, 100000);

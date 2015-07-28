@@ -3,7 +3,7 @@ function date_time() {
   document.getElementById('date').innerHTML = today;
   time = moment().format('h:mm a');
   document.getElementById('time').innerHTML = time;
-  setTimeout(function () { date_time(); }, 1000);
+  setTimeout(function () { date_time(); }, 2000);
 }
 
 
