@@ -3,13 +3,14 @@ function date_time() {
   document.getElementById('date').innerHTML = today;
   time = moment().format('h:mm a');
   document.getElementById('time').innerHTML = time;
-  setTimeout(function () { date_time(); }, 2000);
+  setTimeout(function () { date_time(); }, 5000);
 }
 
 
 $(document).ready(function() {  
   getWeather(); //Get the initial weather.
   date_time();
+  setTimeout(function () { getWeather(); }, 5000);
 });
 
 function getWeather() {

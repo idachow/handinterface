@@ -153,21 +153,8 @@ function pullAgendaDet(message) {
 
 
 function pullName(message) {
-  // rephrase for real time update ??? pls this is so dumb
-  // var clientname = document.getElementById('output_name');
-  // var textContent = document.createTextNode(message);
-  // console.log(message); 
-  // console.log(typeof message); 
-  // console.log(textContent); 
-  // console.log(typeof textContent); 
-  // ok its a string.
-    // WHY IS THIS NOT A STRING??? IS IT A STRING? 
-  // WHAT IS JAVASCRIPT
-  // ARE THERE EVEN VARIABLE TYPES
-  // of course there are but how do you even check
-  // theyre all strings this is basic af html what even
   document.getElementById('output_name').innerHTML = message;
-  setTimeout(function () { listCurrentClient(); }, 2000);
+  setTimeout(function () { listCurrentClient(); }, 5000);
 }
 
 
@@ -183,27 +170,19 @@ function parseWhen(when){
 }
 
 function makeTwelveHr(time){
-  console.log("aaa");
   var tSplit = time.split(":");
-  console.log("tSplit: " + tSplit);
   var twelve = parseInt(tSplit[0]);
-  console.log("twelve: " + twelve);
   if (twelve <= 12) {
-    console.log("if bbb");
     mTime = " am";
   } else {
-    console.log("else bbb");
     mTime = " pm";
   };
   if (twelve % 12 == 0){
-    console.log("if ccc");
-    twelve = string(12);
+    twelve = (12).toString();
   } else {
-    console.log("else ccc");
     twelve = (twelve % 12).toString();
   }
   var answer = [twelve, ":", tSplit[1], mTime].join("")
-  console.log(answer);
   return answer;
 }
 //NOT USING THIS vv
