@@ -7,6 +7,7 @@ var CLIENT_ID = '568834711136-k5krj3frsomrm84npb7ng0me1o7b3hto.apps.googleuserco
 
 var SCOPES = ["https://www.googleapis.com/auth/calendar"];
 
+
 /**
  * Check if current user has authorized this application.
  */
@@ -58,6 +59,47 @@ function loadCalendarApi() {
   gapi.client.load('calendar', 'v3', listAgenda);
 }
 
+
+function isSameDay(gcalYear, gcalMonth, gcalDay) {
+  jsYear = moment().format('YYYY');
+  jsMonth = moment().format('MM');
+  jsDay = moment().format('DD');
+  if (jsYear == gcalYear && jsMonth == gcalMonth && jsDay == gcalDay) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function parseWhen(when){
+  var itemWhen = when;
+  var itemWhenArray = itemWhen.split("-");
+  var itemY = itemWhenArray[0];
+  var itemM = itemWhenArray[1];
+  var midSplit = itemWhenArray[2].split("T");
+  var itemD = midSplit[0];
+  var itemT0 = midSplit[1];
+  var itemT1 = itemWhenArray[3];
+  var itemFinalArray = [itemY, itemM, itemD, itemT0, itemT1];
+  return itemFinalArray;
+}
+
+function makeTwelveHr(time){
+  var tSplit = time.split(":");
+  var twelve = parseInt(tSplit[0]);
+  if (twelve <= 12) {
+    mTime = " am";
+  } else {
+    mTime = " pm";
+  };
+  if (twelve % 12 == 0){
+    twelve = (12).toString();
+  } else {
+    twelve = (twelve % 12).toString();
+  }
+  var answer = [twelve, ":", tSplit[1], mTime].join("")
+  return answer;
+}
 /**
  * Print the summary and start datetime/date of the next ten events in
  * the authorized user's calendar. If no events are found an
@@ -84,14 +126,16 @@ function listCurrentClient() {
         if (!when) {
           when = event.start.date;
         }
-        pullName(event.summary);
-        // pullDetails(when);
+        var itemDate = parseWhen(when);
+        if (isSameDay(itemDate[0], itemDate[1], itemDate[2]) == true) {
+          pullName(event.summary);
+        } else {
+          pullName('');
+        }
       }
-    } else {
-      pullName('');
     }
-
   });
+  setTimeout(function () { listCurrentClient(); }, 5000);
 }
 
 function listAgenda() {
@@ -100,7 +144,7 @@ function listAgenda() {
     'timeMin': (new Date()).toISOString(),
     'showDeleted': false,
     'singleEvents': true,
-    'maxResults': 10,
+    // 'maxResults': 10,
     'orderBy': 'startTime'
   });
 
@@ -115,14 +159,16 @@ function listAgenda() {
         if (!when) {
           when = event.start.date;
         }
-        pullAgenda(event.summary);
-        pullAgendaDet(when);
+        var itemDate = parseWhen(when);
+        if (isSameDay(itemDate[0], itemDate[1], itemDate[2]) == true) {
+          pullAgenda(event.summary,when);
+        } else {
+          pullAgenda('');
+        }
       }
-    } else {
-      pullAgenda('Nothing today');
-    }
-
+    } 
   });
+  setTimeout(function () { listCurrentClient(); }, 5000);
 }
 
 /**
@@ -131,60 +177,25 @@ function listAgenda() {
  *
  * @param {string} message Text to be placed in pre element.
  */
-function pullAgenda(message) {
+function pullAgenda(message,when) {
   // var agendaname = document.getElementById('output_agendaName');
   // var textContent = document.createTextNode(message);
   // agendaname.appendChild(textContent);
   // var br = document.createElement("br");
   // agendaname.appendChild(br);
-
   document.getElementById('output_agendaName').innerHTML = message;
-  setTimeout(function () { listAgenda(); }, 2000);
-}
-function pullAgendaDet(message) {
-  // var agendadetails = document.getElementById('output_agendaDetails');
-  // var textContent = document.createTextNode(message);
-  // agendadetails.appendChild(textContent);
-  // var br = document.createElement("br");
-  // agendadetails.appendChild(br);
-  parseWhen(message);
-  document.getElementById('output_agendaDetails').innerHTML = makeTwelveHr(itemT0);
+  var agendaWhen = parseWhen(when);
+  document.getElementById('output_agendaDetails').innerHTML = makeTwelveHr(agendaWhen[3]);
 }
 
 
 function pullName(message) {
   document.getElementById('output_name').innerHTML = message;
-  setTimeout(function () { listCurrentClient(); }, 5000);
 }
 
 
-function parseWhen(when){
-  itemWhen = when;
-  itemWhenArray = itemWhen.split("-");
-  itemY = itemWhenArray[0];
-  itemM = itemWhenArray[1];
-  midSplit = itemWhenArray[2].split("T");
-  itemD = midSplit[0];
-  itemT0 = midSplit[1];
-  itemT1 = itemWhenArray[3];
-}
 
-function makeTwelveHr(time){
-  var tSplit = time.split(":");
-  var twelve = parseInt(tSplit[0]);
-  if (twelve <= 12) {
-    mTime = " am";
-  } else {
-    mTime = " pm";
-  };
-  if (twelve % 12 == 0){
-    twelve = (12).toString();
-  } else {
-    twelve = (twelve % 12).toString();
-  }
-  var answer = [twelve, ":", tSplit[1], mTime].join("")
-  return answer;
-}
+
 //NOT USING THIS vv
 // function pullDetails(message) {
 //   var clientdetails = document.getElementById('output_details');

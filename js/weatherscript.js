@@ -34,3 +34,6 @@ function getWeather() {
     }
   });
 }
+
+
+and mostly help with the Nepali-Bhutanese refugees in the area. We do two things - SAT/college prep mentoring, and in home assistance for the families. I work with a family every weekend, they came to Pittsburgh last July. We help them with English, cultural barriers, how to use the library + bus system.. food stamps... jobs...... it's great. Plus you get to meet a ton of amazing people that really care about the refugee effort. 
