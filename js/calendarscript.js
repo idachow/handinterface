@@ -130,7 +130,7 @@ function listCurrentClient() {
         if (isSameDay(itemDate[0], itemDate[1], itemDate[2]) == true) {
           pullName(event.summary);
         } else {
-          pullName('');
+          pullName('No client today');
         }
       }
     }
@@ -139,6 +139,10 @@ function listCurrentClient() {
 }
 
 function listAgenda() {
+  // reset agenda globals
+  agendaItemAll = "";
+  agendaWhenAll = "";
+
   var request = gapi.client.calendar.events.list({
     'calendarId': 'gil06taepm0grc18268o870tj8@group.calendar.google.com',
     'timeMin': (new Date()).toISOString(),
@@ -161,14 +165,18 @@ function listAgenda() {
         }
         var itemDate = parseWhen(when);
         if (isSameDay(itemDate[0], itemDate[1], itemDate[2]) == true) {
-          pullAgenda(event.summary,when);
-        } else {
-          pullAgenda('');
-        }
+          getFullAgenda(event.summary);
+          getFullWhen(when);
+        } 
+      }
+      if (agendaItemAll == "") {
+        pullAgenda("No", "agenda");
+      } else {
+        pullAgenda(agendaItemAll, agendaWhenAll);
       }
     } 
   });
-  setTimeout(function () { listCurrentClient(); }, 5000);
+  setTimeout(function () { listAgenda(); }, 5000);
 }
 
 /**
@@ -177,19 +185,31 @@ function listAgenda() {
  *
  * @param {string} message Text to be placed in pre element.
  */
+function getFullAgenda(message) {
+  // get full agenda through gcal api to be inputted as innerHTML
+  agendaItemAll = agendaItemAll + "<br>" + message;
+}
+
+function getFullWhen(when) {
+  // same as above but for the
+  var agendaWhen = parseWhen(when);
+  agendaWhenAll = agendaWhenAll + "<br>" + makeTwelveHr(agendaWhen[3]);
+
+}
+
 function pullAgenda(message,when) {
   // var agendaname = document.getElementById('output_agendaName');
   // var textContent = document.createTextNode(message);
   // agendaname.appendChild(textContent);
   // var br = document.createElement("br");
-  // agendaname.appendChild(br);
   document.getElementById('output_agendaName').innerHTML = message;
-  var agendaWhen = parseWhen(when);
-  document.getElementById('output_agendaDetails').innerHTML = makeTwelveHr(agendaWhen[3]);
+  // var agendaWhen = parseWhen(when);
+  document.getElementById('output_agendaDetails').innerHTML = when;
 }
 
 
 function pullName(message) {
+  console.log("message - " + message);
   document.getElementById('output_name').innerHTML = message;
 }
 
